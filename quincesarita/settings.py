@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # Agregar aquí 
 ]
-
+ 
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'quincesarita.urls'
@@ -82,13 +82,26 @@ WSGI_APPLICATION = 'quincesarita.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',  # Usamos el backend de PostgreSQL
+        'NAME': 'quincesarita',       # El nombre de tu base de datos
+        'USER': 'postgres',                # El usuario de la base de datos
+        'PASSWORD': 'admin',                   # La contraseña del usuario
+        'HOST': 'localhost',                        # Si PostgreSQL está en el mismo servidor
+        'PORT': '5432',                        # Puerto predeterminado de PostgreSQL
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
+    }   
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
